@@ -1,8 +1,8 @@
 #Inspired by https://www.geeksforgeeks.org/estimating-value-pi-using-monte-carlo/
 #Changed points distribution to one quarter and added showProgress variable which can be used to check how program works in each iteration
 import random
-points = 100000
-showProgress= True
+points = 1000
+showProgress= False
 circle_points = 0
 square_points = 0
 
