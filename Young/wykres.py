@@ -8,20 +8,19 @@ x1 = np.array([0, 0.19262, 0.142245, 0.096138, 0.478728, 0.125568, 0.251136, 0.0
 y1 = np.array([0, 1.32, 0.88, 0.28, 3.68, 0.5, 1.62, 0.08, 0.02, 0.32, 0.04])
 
 #delta l
-ey=np.array([0.0632, 0.095463,
-0.095463,
-0.095463,
-0.095463,
-0.1141,
-0.051027,
-0.051027,
-0.051027,
-0.095463,
-0.062495,
-
+ey=np.array([0.0721,
+0.1196311,
+0.1196311,
+0.1196311,
+0.1196311,
+0.1349712,
+0.0883299,
+0.0883299,
+0.0883299,
+0.1196311,
+0.0954151
 ])
 #Convert cm to m
-y1=y1
 ey=ey/100
 y1=y1/100
 
@@ -35,10 +34,10 @@ model = LinearRegression().fit(xr, yr)
 x_range = np.linspace(0, xr.max(), 100)
 #Preditcting y values for 100 points given above
 y_range = model.predict(x_range.reshape(-1, 1))
-#coeficient is 1/E so we need to calculate (1/E)^-1 in order to get our result
-print("Predicted E value: ", model.coef_**-1)
-x_test=np.linspace(9.81, 9.81, 1)
-print(model.predict(x_test.reshape(-1, 1)))
+#coeficient is 1/k so we need to calculate (1/k)^-1 in order to get our result
+print("Predicted k value: ", model.coef_**-1)
+print("Predicted E value: ", model.coef_)
+
 #Graph generation
 fig = px.scatter(x=x1, y=y1, error_y=ey)
 fig.add_traces(go.Scatter(x=x_range, y=y_range, name='Linear regression'))
